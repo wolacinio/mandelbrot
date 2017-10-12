@@ -15,8 +15,9 @@ struct complex
 
 const int width = 500;
 const int height = 500;
-Vertex view[height][width];
-VertexArray fraktal(Points, height + width);
+Vertex view[width][height];
+VertexArray fraktal(Points, height * width);
+
 
 complex potegowanie(complex, complex);
 bool modul(complex);
@@ -25,7 +26,7 @@ complex clear(complex);
 
 int main(int argc, char** argv){
 	cout << "Wprowadz ilosc iteracji: ";
-	cin >> maxIter;
+	//cin >> maxIter;
 	
 	complex temp;
 	int color;
@@ -42,11 +43,15 @@ int main(int argc, char** argv){
 		temp.imag = i*ratioY + minY;
 		for (int j = 0; j < width; ++j) {
 			temp.real = j*ratioX + minX;
-			color = calculate(temp);
-			view[j][i].position = Vector2f(i, j);
-			view[j][i].color = Color::Red;
-			fraktal[i+j].position = Vector2f(i, j);
-			fraktal[i+j].color = Color::Red;
+			//color = calculate(temp);
+			// view[j][i].position = Vector2f(i, j);
+			// view[j][i].color = Color::Red;
+			fraktal[i*500+j].position = Vector2f(j, i);
+			if(j % 10 == 0)
+				fraktal[i*500+j].color = Color::Red;
+			else
+				fraktal[i*500+j].color = Color::Blue;
+			
 			//cout << color << " ";
 		}
 		//cout << endl;
@@ -54,7 +59,7 @@ int main(int argc, char** argv){
 	
 	ContextSettings settings;
 	settings.antialiasingLevel = 8;
-	RenderWindow window(VideoMode(height, width), "SFML works!", Style::Default, settings);
+	RenderWindow window(VideoMode(width, height), "SFML works!", Style::Default, settings);
     CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
  
@@ -63,13 +68,13 @@ int main(int argc, char** argv){
         Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == Event::Closed)
                 window.close();
         }
  
         window.clear();
-        window.draw(shape);
-        // window.draw(fraktal);
+        // window.draw(shape);
+        window.draw(fraktal);
         window.display();
     }
 

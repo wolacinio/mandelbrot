@@ -3,7 +3,7 @@
 CXX := g++
 CXXFLAGS := -c
 LD := g++
-LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -std=c++11
+LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -std=c++14
 
 NAME := mandelbrot
 SRCDIR := src
@@ -20,8 +20,6 @@ all: $(EXE)
 clean:
 	rm -f $(OBJ)
 	rm -f $(EXE)
-install: all
-	@echo "Aplikacja zainstalowana!"
 
 $(EXE): $(OBJDIR) $(OBJ)
 	$(LD) $(OBJ) $(LDFLAGS) -o $@

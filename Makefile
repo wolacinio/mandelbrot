@@ -3,7 +3,7 @@
 CXX := g++
 CXXFLAGS := -c
 LD := g++
-LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -std=c++14
+LDFLAGS := -ltgui -lsfml-graphics -lsfml-window -lsfml-system -std=c++14
 
 NAME := mandelbrot
 SRCDIR := src

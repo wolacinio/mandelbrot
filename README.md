@@ -6,7 +6,7 @@
 # apt-get install libsfml-dev
 # wget https://github.com/texus/TGUI/archive/0.8-dev.zip
 # unzip 0.8-dev.zip
-# cd 0.8-dev.zip
+# cd TGUI-0.8-dev
 # cmake .
 # make -j2
 # sudo make install

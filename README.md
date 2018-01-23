@@ -1,5 +1,5 @@
 # Mandelbrot
-### How use?
+### How to use?
 
 ### Install lib
 ```
